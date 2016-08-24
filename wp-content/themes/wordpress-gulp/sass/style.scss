@@ -19,7 +19,15 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
+
+@import "variables-site/variables-site";
 @import "bootstrap";
+
+/*--------------------------------------------------------------
+# Fonts
+--------------------------------------------------------------*/
+$fa-font-path: "./fonts";
+@import "font-awesome";
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
@@ -42,7 +50,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
-@import "variables-site/variables-site";
+
 @import "mixins/mixins-master";
 
 
