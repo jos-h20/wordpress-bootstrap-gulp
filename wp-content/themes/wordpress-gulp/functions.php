@@ -42,6 +42,9 @@ function wordpress_gulp_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
+	// Add logo upload in customizer WordPress 4.5+
+  add_theme_support( 'custom-logo' );
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'wordpress-gulp' ),
@@ -67,6 +70,28 @@ function wordpress_gulp_setup() {
 }
 endif;
 add_action( 'after_setup_theme', 'wordpress_gulp_setup' );
+
+if ( !function_exists( 'strapped_the_custom_logo' ) ) :
+/**
+ * Displays the optional custom logo.
+ *
+ * Does nothing if the custom logo is not available.
+ *
+ */
+function wordpress_gulp_the_custom_logo() {
+    // Try to retrieve the Custom Logo
+    $output = '';
+    if (function_exists('get_custom_logo'))
+        $output = get_custom_logo();
+
+    // Nothing in the output: Custom Logo is not supported, or there is no selected logo
+    // In both cases we display the site's name
+    if (empty($output))
+        $output = '<a class="navbar-brand" href="' . esc_url(home_url('/')) . '">' . get_bloginfo('name') . '</a>';
+
+    echo $output;
+}
+endif;
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -133,3 +158,8 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Bootstrap Walker Menu
+ */
+require get_template_directory() . '/inc/bootstrap-walker.php';
