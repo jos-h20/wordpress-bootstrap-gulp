@@ -12,6 +12,12 @@
     @extend .panel-body;
   }
 
+	.tagcloud a {
+     @extend .btn;
+     @extend .btn-default;
+     margin-bottom: 5px;
+   }
+
   ul {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -26,4 +32,4 @@
     border: none;
     box-shadow: none;
   }
-}  
+}

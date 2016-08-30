@@ -140,6 +140,17 @@ function wordpress_gulp_scripts() {
 add_action( 'wp_enqueue_scripts', 'wordpress_gulp_scripts' );
 
 /**
+ * Editing the Tag Widget
+ */
+function my_widget_tag_cloud_args( $args ) {
+  $args['largest'] = 11;
+  $args['smallest'] = 11;
+  $args['unit'] = 'px';
+  return $args;
+}
+add_filter( 'widget_tag_cloud_args', 'my_widget_tag_cloud_args' );
+
+/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
